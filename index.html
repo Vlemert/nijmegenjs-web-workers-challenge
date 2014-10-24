@@ -20,6 +20,7 @@ var worker = new FallReadyWorker({
   		  //11 chars per iteration
   		  str += Math.random().toString(36).substring(7);
   		}
+        //throw new Error("HOI");
   		return str;
   	},
     getPostData: function(e){
@@ -31,6 +32,9 @@ var worker = new FallReadyWorker({
     setTimeout(function(){
     	outputEl.innerText = 'Done.';
     },10);
+  },
+  onError: function(e) {
+      console.error(e);
   }
 });
 

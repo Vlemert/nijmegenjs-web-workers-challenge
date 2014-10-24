@@ -16,7 +16,7 @@ var FallReadyWorker = function(options){
     if (Worker) {
         var myWorker = "var func = " + options.worker.func.toString() + "; var getPostData = " + options.worker.getPostData.toString() + "; self.addEventListener('message', function(e) { self.postMessage(getPostData(e))}); self.addEventListener('error', " + options.onError + ");";
 
-        var blob = new Blob([String(myWorker)]),
+        var blob = new Blob([String(myWorker)], {type: "text/javascript"}),
             blobUrl = window.URL.createObjectURL(blob);
 
         this.worker = new Worker(blobUrl);
